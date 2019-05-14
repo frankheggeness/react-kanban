@@ -1,0 +1,5 @@
+version: '3'
+services:
+  react-kanban:
+    build: .
+    image: ${DOCKERHUB_NAME}/${IMAGE_NAME}:${IMAGE_VERSION}
