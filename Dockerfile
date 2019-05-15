@@ -30,7 +30,7 @@ RUN npm install
 COPY . .
 
 # Expose this port on DOCKER NETWORK (NOT HOST MAPPING)
-EXPOSE 3000
+EXPOSE 8080
 
 # Start the Express server
 CMD ["node", "./server/server.js"]

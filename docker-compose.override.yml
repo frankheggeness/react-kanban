@@ -1,9 +1,9 @@
 version: '3'
 services:
-  react-kanban:
+  express-server:
     ports:
-      - 3000:3000
-    command: ['./node_modules/.bin/nodemon', 'server.js']
+      - '${EXPRESS_HOST_PORT}:${EXPRESS_CONTAINER_PORT}'
+    command: ['./node_modules/.bin/nodemon', 'server/server.js']
     volumes:
       - ./:/app
     env_file: .env

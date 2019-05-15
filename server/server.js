@@ -1,27 +1,25 @@
 const express = require('express');
-// const exphbs = require('express-handlebars');
-// const verify = require('./middleware/verify');
-// const methodOverride = require('method-override');
-// const bodyParser = require('body-parser');
-// const fs = require('fs');
+const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
-// const flash = require('connect-flash');
-
 const LocalStrategy = require('passport-local');
 const cookieParser = require('cookie-parser');
 const redis = require('connect-redis')(session);
 
-const PORT = 3000;
 const saltRounds = 12;
+// routes
+const userRoute = require('./routes/users');
+
+require('dotenv').config();
+const PORT = process.env.EXPRESS_CONTAINER_PORT;
 
 const app = express();
 // app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 // passport stuff
-app.use(express.static('public'));
+
 // app.use(methodOverride('_method'));
 app.use(cookieParser());
 app.use(
@@ -85,8 +83,11 @@ passport.deserializeUser(function(user, done) {
 });
 
 app.get('/', (req, res) => {
+  console.log('hi');
   return res.send('hi');
 });
+
+app.use('/api/users', userRoute);
 
 const server = app.listen(PORT, () => {
   console.log(`Express app is running at port ${PORT}`);
