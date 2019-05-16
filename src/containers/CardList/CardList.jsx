@@ -29,7 +29,9 @@ class CardList extends Component {
             key={idx}
             title={card.title}
             body={card.body}
+            priority={card.priority}
             priority_id={card.priority_id}
+            status={card.status}
             status_id={card.status_id}
             created_by={card.created_by}
             assigned_to={card.assigned_to}
@@ -39,7 +41,9 @@ class CardList extends Component {
     return (
       <>
         {/* <input type="text" value={'hello'} /> */}
-
+        {/* <div>
+          <h2 className="status">{props.status}</h2>
+        </div> */}
         {cardList}
       </>
     );

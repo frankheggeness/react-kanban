@@ -1,0 +1,8 @@
+.Queue,
+.In.Progress,
+.Done {
+  color: blue;
+  font-weight: 900;
+  font-size: 1.5em;
+  border-bottom: 1px dotted black;
+}

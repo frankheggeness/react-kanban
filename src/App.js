@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import KanbanTitle from './components/KanbanTitle';
 import CardList from './containers/CardList';
+import Column from './components/Column';
 // import AddBook from './containers/AddBook';
 import { connect } from 'react-redux';
 import { loadCards } from './actions';
@@ -11,12 +12,12 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      title: 'Kanban Test List',
+      title: 'Kanban',
     };
   }
 
   componentDidMount() {
-    console.log(this.props);
+    console.log(this.props.cards);
     return this.props.loadCards();
   }
 
@@ -27,15 +28,30 @@ class App extends React.Component {
           {/* <UserLoggedIn loggedIn={this.props.length} /> */}
           <KanbanTitle title={this.state.title} />
         </header>
+        <div className="main-body">
+          <Column
+            className="Queue-column"
+            status_id={this.props.status_id}
+            users={this.props.users}
+            label="Queue"
+            cards={this.props.cards}
+          />
 
-        <div className="cardlist-container">
-          <CardList cards={this.props.cards} />
-        </div>
+          <Column
+            className="Queue-column"
+            status_id={this.props.status_id}
+            users={this.props.users}
+            label="In Progress"
+            cards={this.props.cards}
+          />
 
-        <div className="add-card-form">
-          {/* <Consumer context> */}
-          {/* <AddBook /> */}
-          {/* </Consumer> */}
+          <Column
+            className="Queue-column"
+            status_id={this.props.status_id}
+            users={this.props.users}
+            label="Done"
+            cards={this.props.cards}
+          />
         </div>
       </div>
     );
