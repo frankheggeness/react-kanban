@@ -2,10 +2,12 @@ import React from 'react';
 import './App.css';
 import KanbanTitle from './components/KanbanTitle';
 import CardList from './containers/CardList';
+import NewCardForm from './containers/NewCardForm';
 import Column from './components/Column';
 // import AddBook from './containers/AddBook';
 import { connect } from 'react-redux';
 import { loadCards } from './actions';
+import { loadUsers } from './actions';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,8 +19,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.cards);
-    return this.props.loadCards();
+    return this.props.loadCards() && this.props.loadUsers() && console.log(this.props.cards);
   }
 
   render() {
@@ -53,6 +54,7 @@ class App extends React.Component {
             cards={this.props.cards}
           />
         </div>
+        <NewCardForm users={this.props.users} />
       </div>
     );
   }
@@ -61,8 +63,7 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
   return {
     cards: state.cardReducer.cards,
-    // or
-    // ...state
+    users: state.cardReducer.users,
   };
 };
 
@@ -70,6 +71,9 @@ const mapDispatchtoProps = (dispatch) => {
   return {
     loadCards: () => {
       return dispatch(loadCards());
+    },
+    loadUsers: () => {
+      return dispatch(loadUsers());
     },
   };
 };

@@ -52,12 +52,13 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  console.log('$%$@##$^#@^ youve reached the post');
   new Card({
     title: req.body.title,
     body: req.body.body,
     priority_id: req.body.priority_id,
-    status_id: req.user.status_id,
-    created_by: req.user.id,
+    status_id: req.body.status_id,
+    created_by: req.body.created_by,
     assigned_to: req.body.assigned_to,
   })
     .save()

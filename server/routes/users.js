@@ -5,12 +5,22 @@ const knex = require('../database/knex');
 const passport = require('passport');
 const User = require('../database/models/User');
 
-router.get('/', (req, res) => {
-  // return res.send('/api/users smoke test');
-  new User().fetchAll().then((results) => {
-    let resultsObj = results.toJSON();
+// router.get('/', (req, res) => {
+//   // return res.send('/api/users smoke test');
+//   new User().fetchAll().then((results) => {
+//     let resultsObj = results.toJSON();
 
-    return res.send(resultsObj);
+//     return res.send(resultsObj);
+//   });
+// });
+
+router.get('/', (req, res) => {
+  // console.log('hi');
+  // return res.send('hi');
+  new User().fetchAll().then((results) => {
+    let resultsObj = results;
+
+    return res.json(resultsObj);
   });
 });
 
