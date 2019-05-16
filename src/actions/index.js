@@ -1,6 +1,7 @@
 // ACTION DEFINTION
 // export const ADD_BOOK = 'ADD_BOOK';
 export const LOAD_CARDS = 'LOAD_CARDS';
+export const ADD_CARD = 'ADD_CARD';
 
 // ACTION CREATOR
 // export function addBook(newBook) {
@@ -10,27 +11,26 @@ export const LOAD_CARDS = 'LOAD_CARDS';
 //   // };
 // }
 
-// export function addBook(newBook) {
-//   return (dispatch) => {
-//     // call out to server
-//     return fetch('/books', {
-//       method: 'POST',
-//       body: JSON.stringify(newBook),
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     })
-//       .then((response) => {
-//         return response.json();
-//       })
-//       .then((body) => {
-//         return dispatch({
-//           type: ADD_BOOK,
-//           payload: body,
-//         });
-//       });
-//   };
-// }
+export const addCard = (card) => {
+  return (dispatch) => {
+    return fetch('/api/cards', {
+      method: 'POST',
+      body: JSON.stringify(card),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((body) => {
+        return dispatch({
+          type: ADD_CARD,
+          payload: body,
+        });
+      });
+  };
+};
 
 export const loadCards = () => {
   return (dispatch) => {

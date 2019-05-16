@@ -51,8 +51,19 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/new', (req, res) => {
-  return res.send('/api/card/new smoke test');
+router.post('/', (req, res) => {
+  new Card({
+    title: req.body.title,
+    body: req.body.body,
+    priority_id: req.body.priority_id,
+    status_id: req.user.status_id,
+    created_by: req.user.id,
+    assigned_to: req.body.assigned_to,
+  })
+    .save()
+    .then(() => {
+      return res.redirect(`/`);
+    });
 });
 
 router.get('/:id/edit', (req, res) => {
