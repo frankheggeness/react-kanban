@@ -6,12 +6,15 @@ const bcrypt = require('bcryptjs');
 const LocalStrategy = require('passport-local');
 const cookieParser = require('cookie-parser');
 const redis = require('connect-redis')(session);
-
+const Card = require('./database/models/Card');
 const saltRounds = 12;
 // routes
 const userRoute = require('./routes/users');
-
+const prioritiesRoute = require('./routes/priorities');
+const statusesRoute = require('./routes/statuses');
+const cardsRoute = require('./routes/cards');
 require('dotenv').config();
+
 const PORT = process.env.EXPRESS_CONTAINER_PORT;
 
 const app = express();
@@ -82,12 +85,20 @@ passport.deserializeUser(function(user, done) {
   });
 });
 
-app.get('/', (req, res) => {
-  console.log('hi');
-  return res.send('hi');
-});
+// app.get('/', (req, res) => {
+//   // console.log('hi');
+//   // return res.send('hi');
+//   new Card().fetchAll({ withRelated: ['priorities', 'statuses', 'created_by', 'assigned_to'] }).then((results) => {
+//     let resultsObj = results.toJSON();
+
+//     return res.send(resultsObj);
+//   });
+// });
 
 app.use('/api/users', userRoute);
+app.use('/api/priorities', prioritiesRoute);
+app.use('/api/statuses', statusesRoute);
+app.use('/api/cards', cardsRoute);
 
 const server = app.listen(PORT, () => {
   console.log(`Express app is running at port ${PORT}`);

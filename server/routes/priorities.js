@@ -3,11 +3,10 @@ const router = express.Router();
 const knex = require('../database/knex');
 // const verify = require('../middleware/verify');
 const passport = require('passport');
-const User = require('../database/models/User');
+const Priority = require('../database/models/Priority');
 
 router.get('/', (req, res) => {
-  // return res.send('/api/users smoke test');
-  new User().fetchAll().then((results) => {
+  new Priority().fetchAll().then((results) => {
     let resultsObj = results.toJSON();
 
     return res.send(resultsObj);
@@ -15,16 +14,13 @@ router.get('/', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-  return res.send('/api/users/new smoke test');
-});
-router.get('/login', (req, res) => {
-  return res.send('you logging in cuz');
+  return res.send('/api/priorities/new smoke test');
 });
 
-router.get('/:id', (req, res) => {
-  new User()
+router.get('/:id/edit', (req, res) => {
+  new Priority()
     .where({ id: req.params.id })
-    .fetchAll()
+    .fetchAll({ withRelated: ['cards'] })
     .then((results) => {
       let resultsObj = results.toJSON();
 
@@ -32,8 +28,8 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.get('/:id/edit', (req, res) => {
-  return res.send('/api/users/:id/edit smoke test');
-});
+// router.get('/:id/edit', (req, res) => {
+//   return res.send('/api/users/:id/edit smoke test');
+// });
 
 module.exports = router;

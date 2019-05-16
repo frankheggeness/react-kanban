@@ -3,13 +3,13 @@ const bookshelf = require('../bookshelf');
 require('./Card');
 class Status extends bookshelf.Model {
   get tableName() {
-    return 'comments';
+    return 'statuses';
   }
   get hasTimestamps() {
     return true;
   }
 
-  Cards() {
+  cards() {
     return this.hasMany('Card');
   }
 }
