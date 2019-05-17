@@ -16,17 +16,9 @@ class NewCardButton extends Component {
 
   clickForm(event) {
     console.log('clicked');
-    // let input;
-    // if (this.props.newCardMaker === false) {
-    //   input = true;
-    //   console.log('NEW CARD' + this.props.newCardMaker);
-    //   console.log('input' + input);
-    //   this.props.showNewCard(input);
-    // } else if (this.props.newCardMaker === true) {
-    //   console.log('NEW CARD' + this.props.newCardMaker);
-    //   input = false;
-    //   this.props.showNewCard(input);
-    // }
+   
+    let modal = document.getElementById('myModal')
+    modal.style.display = 'block'
     if (this.state.buttonClick === false) {
       this.setState({
         buttonClick: true,

@@ -47,6 +47,8 @@ class NewCardForm extends Component {
 
   addNewCard(e) {
     e.preventDefault();
+    let modal = document.getElementById('myModal')
+    modal.style.display = 'none'
     const data = {};
     data.title = this.state.titleInput;
     data.body = this.state.bodyInput;
@@ -84,6 +86,8 @@ class NewCardForm extends Component {
   render() {
     // if (this.state.newForm) {
       return (
+        <div id="myModal" >
+        <div id="modal-content">
         <form id="newCardForm">
           <div className="formDiv">
             <label htmlFor="title" className="labelClass">
@@ -159,6 +163,10 @@ class NewCardForm extends Component {
 
           <button onClick={this.addNewCard}>Create New Card</button>
         </form>
+        </div>
+          
+        </div>
+        
       );
     // } else  {
     //   return <div> no form</div>;
