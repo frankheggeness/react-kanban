@@ -8,20 +8,37 @@ import { connect } from 'react-redux';
 class NewCardButton extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      buttonClick: false,
+    };
     this.clickForm = this.clickForm.bind(this);
   }
 
   clickForm(event) {
-    let input;
-    if (this.props.newCardMaker === false) {
-      input = true;
-      // this.props.newCardMaker = true;
-    } else {
-      input = false;
-      // this.props.newCardMaker = false;
+    console.log('clicked');
+    // let input;
+    // if (this.props.newCardMaker === false) {
+    //   input = true;
+    //   console.log('NEW CARD' + this.props.newCardMaker);
+    //   console.log('input' + input);
+    //   this.props.showNewCard(input);
+    // } else if (this.props.newCardMaker === true) {
+    //   console.log('NEW CARD' + this.props.newCardMaker);
+    //   input = false;
+    //   this.props.showNewCard(input);
+    // }
+    if (this.state.buttonClick === false) {
+      this.setState({
+        buttonClick: true,
+      });
+      this.props.showNewCard(true);
     }
-    this.props.showNewCard(input);
+    if (this.state.buttonClick === true) {
+      this.setState({
+        buttonClick: false,
+      });
+      this.props.showNewCard(false);
+    }
   }
   render() {
     return <button onClick={this.clickForm}>New Card</button>;
@@ -29,7 +46,6 @@ class NewCardButton extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    // cards: state.cards
     newCardMaker: state.cardReducer.newCardMaker,
   };
 };

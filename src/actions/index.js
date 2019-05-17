@@ -117,12 +117,12 @@ export const editCard = (id) => {
 };
 
 export const showNewCard = (input) => {
-  let x = input;
-  console.log(input);
+  // console.log(input);
   // return {
   //   type: SHOW_NEW_CARD,
   //   payload: !input,
   // };
+  console.log('actioninput' + input);
   return (dispatch) => {
     dispatch({
       type: SHOW_NEW_CARD,

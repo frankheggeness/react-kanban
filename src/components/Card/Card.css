@@ -3,4 +3,23 @@
   padding: 1em 1em 1em 1em;
   margin: 1em 1em 1em 1em;
   width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  /* background-color: yellow; */
+}
+
+.cardTitle {
+  font-size: 1.15em;
+}
+
+.cardLowerRow {
+  display:flex;
+  margin: .25em;
+}
+
+.cardPriority, .cardCreated{
+  font-size: .8em;
+  margin: .25em;
 }

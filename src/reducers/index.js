@@ -24,7 +24,7 @@ function cardReducer(state = initialState, action) {
       return Object.assign({}, state, { cards: [...action.payload] });
 
     case SHOW_NEW_CARD:
-      return Object.assign({}, state, { newCardMaker: [action.payload] });
+      return Object.assign({}, state, { newCardMaker:action.payload });
     default:
       return state;
   }

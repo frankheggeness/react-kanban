@@ -15,7 +15,7 @@ class NewCardForm extends Component {
       statusInput: '',
       created_byInput: '',
       assigned_toInput: '',
-      newForm: false,
+      newForm: this.props.newCardMaker,
     };
     this.addNewCard = this.addNewCard.bind(this);
     this.clickForm = this.clickForm.bind(this);
@@ -91,7 +91,7 @@ class NewCardForm extends Component {
     this.props.showNewCard(this.props.newCardMaker);
   }
   render() {
-    if (this.props.newCardMaker) {
+    if (this.state.newForm) {
       return (
         <form id="newCardForm">
           <div className="formDiv">
@@ -169,8 +169,8 @@ class NewCardForm extends Component {
           <button onClick={this.addNewCard}>Create New Card</button>
         </form>
       );
-    } else {
-      return <div> hi</div>;
+    } else  {
+      return <div> no form</div>;
     }
   }
 }

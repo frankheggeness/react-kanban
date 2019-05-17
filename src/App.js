@@ -41,7 +41,7 @@ class App extends React.Component {
           />
 
           <Column
-            className="Queue-column"
+            className="Progress-column"
             status_id={this.props.status_id}
             users={this.props.users}
             label="In Progress"
@@ -49,7 +49,7 @@ class App extends React.Component {
           />
 
           <Column
-            className="Queue-column"
+            className="Done-column"
             status_id={this.props.status_id}
             users={this.props.users}
             label="Done"
@@ -66,6 +66,7 @@ const mapStateToProps = (state) => {
   return {
     cards: state.cardReducer.cards,
     users: state.cardReducer.users,
+    newCardMaker: state.cardReducer.newCardMaker,
   };
 };
 

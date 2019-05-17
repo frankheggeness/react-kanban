@@ -7,13 +7,16 @@ const Card = (props) => {
 
   return (
     <div className="card">
-      <div>{title}</div>
-      <div>{body}</div>
-      <div>{priority}</div>
-      <div>Created by: {created_by}</div>
-      <div>Assigned to: {assigned_to}</div>
-      <div>Id: {id}</div>
+      <div className="cardTitle">{title}</div>
+      {/* <div className="cardBody">{body}</div> */}
+      <div className="cardPriority">Priority: {priority}</div>
+      <div className="cardCreated">Created by: {created_by}</div>
+      <div className="cardLowerRow">
       <EditButtons id={id} />
+      <div className="cardAssigned">For: {assigned_to}</div>
+      {/* <div>Id: {id}</div> */}
+      
+      </div>
     </div>
   );
 };

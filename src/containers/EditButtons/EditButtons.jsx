@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 // import AddCardButton from '../AddCardButton';
 import { deleteCard } from '../../actions';
 import { connect } from 'react-redux';
-// import './NewCardForm.css';
+import './EditButtons.css';
+
 
 class EditButtons extends Component {
   constructor(props) {
@@ -28,11 +29,14 @@ class EditButtons extends Component {
     });
   }
   render() {
-    if (this.state.show) {
-      return <button onClick={this.deleteCard}>Delete Card</button>;
-    } else {
-      return <button onClick={this.showButton}>show</button>;
-    }
+    // if (this.state.show) {
+      return <div>
+        <button onClick={this.deleteCard} className="deleteButton">Delete Card</button>
+      </div>
+      
+    // } else {
+    //   return <button onClick={this.showButton}>show</button>;
+    // }
   }
 }
 
