@@ -126,14 +126,7 @@ export const showNewCard = (input) => {
   return (dispatch) => {
     dispatch({
       type: SHOW_NEW_CARD,
-      payload: !input,
+      payload: input,
     });
   };
 };
-
-// export function userLoggedOut() {
-//   return {
-//     type: USER_LOGGED_OUT,
-//     payload: undefinde,
-//   };
-// }

@@ -3,6 +3,7 @@ import './App.css';
 import KanbanTitle from './components/KanbanTitle';
 import CardList from './containers/CardList';
 import NewCardForm from './containers/NewCardForm';
+import NewCardButton from './containers/NewCardButton';
 import Column from './components/Column';
 // import AddBook from './containers/AddBook';
 import { connect } from 'react-redux';
@@ -28,6 +29,7 @@ class App extends React.Component {
         <header className="App-header">
           {/* <UserLoggedIn loggedIn={this.props.length} /> */}
           <KanbanTitle title={this.state.title} />
+          <NewCardButton />
         </header>
         <div className="main-body">
           <Column
@@ -84,30 +86,3 @@ App = connect(
 )(App);
 
 export default App;
-
-// import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;

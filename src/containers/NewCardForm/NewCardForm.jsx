@@ -170,7 +170,7 @@ class NewCardForm extends Component {
         </form>
       );
     } else {
-      return <button onClick={this.clickForm}>New Card</button>;
+      return <div> hi</div>;
     }
   }
 }
