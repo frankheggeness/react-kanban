@@ -27,6 +27,7 @@ class CardList extends Component {
         return (
           <Card
             key={idx}
+            id={card.id}
             title={card.title}
             body={card.body}
             priority={card.priority}

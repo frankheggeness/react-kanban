@@ -2,15 +2,11 @@
 // export const ADD_BOOK = 'ADD_BOOK';
 export const LOAD_CARDS = 'LOAD_CARDS';
 export const ADD_CARD = 'ADD_CARD';
+export const DELETE_CARD = 'DELETE_CARD';
+export const EDIT_CARD = 'EDIT_CARD';
 export const LOAD_USERS = 'LOAD_USERS';
 
 // ACTION CREATOR
-// export function addBook(newBook) {
-//   // return {
-//   //   type: ADD_BOOK,
-//   //   payload: newBook,
-//   // };
-// }
 
 export const addCard = (card) => {
   return (dispatch) => {
@@ -72,6 +68,50 @@ export const loadUsers = () => {
         });
       })
       .catch((err) => console.log('Cant access website' + err));
+  };
+};
+
+export const deleteCard = (id) => {
+  return (dispatch) => {
+    return fetch('/api/cards', {
+      method: 'DELETE',
+      body: JSON.stringify(id),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((body) => {
+        return dispatch({
+          type: DELETE_CARD,
+          payload: body,
+        });
+      })
+      .catch((err) => console.log('@' + err));
+  };
+};
+
+export const editCard = (id) => {
+  return (dispatch) => {
+    return fetch('/api/cards', {
+      method: 'PUT',
+      body: JSON.stringify(id),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((body) => {
+        return dispatch({
+          type: EDIT_CARD,
+          payload: body,
+        });
+      })
+      .catch((err) => console.log('@' + err));
   };
 };
 

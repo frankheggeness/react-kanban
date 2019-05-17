@@ -14,8 +14,10 @@ class NewCardForm extends Component {
       statusInput: '',
       created_byInput: '',
       assigned_toInput: '',
+      newForm: false,
     };
     this.addNewCard = this.addNewCard.bind(this);
+    this.clickForm = this.clickForm.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
@@ -43,6 +45,7 @@ class NewCardForm extends Component {
   }
 
   addNewCard(event) {
+    // event.preventDefault();
     const data = {};
     data.title = this.state.titleInput;
     data.body = this.state.bodyInput;
@@ -70,9 +73,16 @@ class NewCardForm extends Component {
       statusInput: '',
       created_byInput: '',
       assigned_toInput: '',
+      newForm: false,
+    });
+  }
+  clickForm(event) {
+    this.setState({
+      newForm: true,
     });
   }
   render() {
+    // if (this.state.newForm) {
     return (
       <form id="newCardForm">
         <div>
@@ -134,6 +144,9 @@ class NewCardForm extends Component {
         <button onClick={this.addNewCard}>Save Book</button>
       </form>
     );
+    // } else {
+    //   return <button onClick={this.clickForm}>New Card</button>;
+    // }
   }
 }
 
