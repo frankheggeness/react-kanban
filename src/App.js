@@ -36,7 +36,7 @@ class App extends React.Component {
             className="Queue-column"
             status_id={this.props.status_id}
             users={this.props.users}
-            label="Queue"
+            label="In Queue"
             cards={this.props.cards}
           />
 

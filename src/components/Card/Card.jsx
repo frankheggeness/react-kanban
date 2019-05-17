@@ -3,10 +3,10 @@ import './Card.css';
 import EditButtons from '../../containers/EditButtons';
 
 const Card = (props) => {
-  const { title, body, priority, created_by, assigned_to, id } = props;
-
+  const { title, body, priority, created_by, assigned_to, id, status_id} = props;
+  let cardClass = 'card' + status_id
   return (
-    <div className="card">
+    <div className={cardClass}>
       <div className="cardTitle">{title}</div>
       {/* <div className="cardBody">{body}</div> */}
       <div className="cardPriority">Priority: {priority}</div>

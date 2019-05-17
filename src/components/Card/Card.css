@@ -1,5 +1,4 @@
-.card {
-  border: 1px solid black;
+.card1, .card2, .card3 {
   padding: 1em 1em 1em 1em;
   margin: 1em 1em 1em 1em;
   width: 80%;
@@ -17,9 +16,38 @@
 .cardLowerRow {
   display:flex;
   margin: .25em;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .cardPriority, .cardCreated{
   font-size: .8em;
   margin: .25em;
+}
+
+.card1{
+  background-color: #FDF2DE;
+  border: 1px solid #F5BA49;
+}
+
+.card1 button{
+  color:#F5BA49;
+}
+
+.card2{
+  background-color: #E3F8CA;
+  border: 1px solid #8DD045;
+}
+
+.card2 button{
+  color: #8DD045;
+}
+
+.card3 {
+  background-color: #F7F8FB;
+  border: 1px solid #D3D7E1;
+}
+
+.card3 button{
+  color: #D3D7E1;
 }

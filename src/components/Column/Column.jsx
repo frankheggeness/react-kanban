@@ -14,7 +14,7 @@ const Column = (props) => {
 
 function filterCards(label, cards) {
   switch (label) {
-    case 'Queue':
+    case 'In Queue':
       return cards.filter((card) => card.status_id === 1);
     case 'In Progress':
       return cards.filter((card) => card.status_id === 2);
