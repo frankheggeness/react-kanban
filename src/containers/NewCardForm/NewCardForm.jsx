@@ -78,20 +78,11 @@ class NewCardForm extends Component {
     });
   }
   clickForm(event) {
-    // this.setState({
-    //   titleInput: '',
-    //   bodyInput: '',
-    //   priorityInput: '',
-    //   statusInput: '',
-    //   created_byInput: '',
-    //   assigned_toInput: '',
-    //   newForm: true,
-    // });
     console.log(this.props.newCardMaker);
     this.props.showNewCard(this.props.newCardMaker);
   }
   render() {
-    if (this.state.newForm) {
+    // if (this.state.newForm) {
       return (
         <form id="newCardForm">
           <div className="formDiv">
@@ -169,9 +160,9 @@ class NewCardForm extends Component {
           <button onClick={this.addNewCard}>Create New Card</button>
         </form>
       );
-    } else  {
-      return <div> no form</div>;
-    }
+    // } else  {
+    //   return <div> no form</div>;
+    // }
   }
 }
 

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { addCard } from '../../actions';
 import { showNewCard } from '../../actions';
 import { connect } from 'react-redux';
-// import './NewCardButton.css';
+import './NewCardButton.css';
 
 class NewCardButton extends Component {
   constructor(props) {
@@ -41,7 +41,9 @@ class NewCardButton extends Component {
     }
   }
   render() {
-    return <button onClick={this.clickForm}>New Card</button>;
+    return <div className="newButtonContainer">
+      <button onClick={this.clickForm} className='newCardButton'>+ NEW TASK</button>
+    </div>
   }
 }
 const mapStateToProps = (state) => {

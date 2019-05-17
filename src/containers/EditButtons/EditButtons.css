@@ -2,4 +2,16 @@
   padding: 0;
 border: none;
 background: none;
+margin: 0em 0.25em 0em 0.25em;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+.deleteButton:hover{
+  color:black;
+  cursor: pointer;
+}
+
+.buttonsContainer{
+  display: flex;
+  justify-content: space-around;
 }

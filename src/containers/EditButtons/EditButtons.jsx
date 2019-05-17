@@ -30,11 +30,13 @@ class EditButtons extends Component {
   }
   render() {
     // if (this.state.show) {
-      return <div>
-        <button onClick={this.deleteCard} className="deleteButton">Delete Card</button>
+      return <div className="buttonsContainer">
+        <button onClick={this.deleteCard} className="deleteButton">Edit</button>
+        <button onClick={this.deleteCard} className="deleteButton">Delete</button>
+        
       </div>
       
-    // } else {
+    // } else {kl;
     //   return <button onClick={this.showButton}>show</button>;
     // }
   }

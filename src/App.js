@@ -20,7 +20,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    return this.props.loadCards() && this.props.loadUsers() && console.log(this.props.cards);
+    return this.props.loadUsers() && this.props.loadCards() && console.log(this.props.cards);
   }
 
   render() {
