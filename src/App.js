@@ -14,7 +14,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      title: 'Kanban',
+      title: 'K A N B A N',
     };
   }
 

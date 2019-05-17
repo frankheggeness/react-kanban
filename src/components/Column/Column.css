@@ -5,7 +5,9 @@
   font-weight: 900;
   font-size: 1.5em;
   border-bottom: 1px dotted black;
-  width: 100%;
+  width: 80%;
   padding: 0.5em 0.5em 0.5em 0.5em;
   margin: 0em 0em 0em 0em;
+  /* margin-left: 20%;
+  margin-right: 20%; */
 }

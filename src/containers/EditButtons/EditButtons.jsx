@@ -7,8 +7,11 @@ import { connect } from 'react-redux';
 class EditButtons extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      show: false,
+    };
     this.deleteCard = this.deleteCard.bind(this);
+    this.showButton = this.showButton.bind(this);
     // this.handleInputChange = this.handleInputChange.bind(this);
   }
 
@@ -18,8 +21,18 @@ class EditButtons extends Component {
     };
     this.props.deleteCard(data);
   }
+
+  showButton(event) {
+    this.setState({
+      show: true,
+    });
+  }
   render() {
-    return <button onClick={this.deleteCard}>Delete Card</button>;
+    if (this.state.show) {
+      return <button onClick={this.deleteCard}>Delete Card</button>;
+    } else {
+      return <button onClick={this.showButton}>show</button>;
+    }
   }
 }
 

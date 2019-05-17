@@ -78,11 +78,17 @@ class NewCardForm extends Component {
   }
   clickForm(event) {
     this.setState({
+      titleInput: '',
+      bodyInput: '',
+      priorityInput: '',
+      statusInput: '',
+      created_byInput: '',
+      assigned_toInput: '',
       newForm: true,
     });
   }
   render() {
-    // if (this.state.newForm) {
+    // if (this.props.newCardMaker) {
     return (
       <form id="newCardForm">
         <div>
