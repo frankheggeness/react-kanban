@@ -52,8 +52,8 @@ router.post('/', (req, res) => {
     assigned_to: req.body.assigned_to,
   })
     .save()
-    .then(() => {
-      return res.redirect(`/`);
+    .then((result) => {
+      return res.json(result);
     });
 });
 

@@ -5,6 +5,7 @@ export const ADD_CARD = 'ADD_CARD';
 export const DELETE_CARD = 'DELETE_CARD';
 export const EDIT_CARD = 'EDIT_CARD';
 export const LOAD_USERS = 'LOAD_USERS';
+export const SHOW_NEW_CARD = 'SHOW_NEW_CARD';
 
 // ACTION CREATOR
 
@@ -112,6 +113,21 @@ export const editCard = (id) => {
         });
       })
       .catch((err) => console.log('@' + err));
+  };
+};
+
+export const showNewCard = (input) => {
+  let x = input;
+  console.log(input);
+  // return {
+  //   type: SHOW_NEW_CARD,
+  //   payload: !input,
+  // };
+  return (dispatch) => {
+    dispatch({
+      type: SHOW_NEW_CARD,
+      payload: !input,
+    });
   };
 };
 
