@@ -91,7 +91,7 @@ class NewCardForm extends Component {
     this.props.showNewCard(this.props.newCardMaker);
   }
   render() {
-    if (!this.props.newCardMaker) {
+    if (this.props.newCardMaker) {
       return (
         <form id="newCardForm">
           <div className="formDiv">
@@ -108,13 +108,6 @@ class NewCardForm extends Component {
           </div>
 
           <div className="formDiv">
-            <label htmlFor="body" className="labelClass">
-              Body:
-            </label>
-            <input type="text" name="body" id="body" value={this.state.bodyInput} onChange={this.handleInputChange} />
-          </div>
-
-          <div className="formDiv">
             <label htmlFor="priority" className="labelClass">
               Priority Id:
             </label>
@@ -125,6 +118,13 @@ class NewCardForm extends Component {
               <option value="3">Low</option>
               <option value="4">Blocked</option>
             </select>
+          </div>
+
+          <div className="formDiv">
+            <label htmlFor="body" className="labelClass">
+              Body:
+            </label>
+            <input type="text" name="body" id="body" value={this.state.bodyInput} onChange={this.handleInputChange} />
           </div>
 
           <div className="formDiv">
@@ -177,7 +177,8 @@ class NewCardForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    cards: state.NewCardForm,
+    // cards: state.cards
+    newCardMaker: state.cardReducer.newCardMaker,
   };
 };
 

@@ -6,7 +6,7 @@ import { DELETE_CARD } from '../actions';
 const initialState = {
   cards: [],
   users: [],
-  newCardMaker: 1,
+  newCardMaker: false,
   isLoggedIn: true,
 };
 

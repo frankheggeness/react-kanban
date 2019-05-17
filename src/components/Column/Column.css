@@ -2,7 +2,7 @@
 .In.Progress,
 .Done {
   color: #4c525a;
-  font-weight: 900;
+  font-weight: 300;
   font-size: 1.5em;
   border-bottom: 1px dotted black;
   width: 80%;
