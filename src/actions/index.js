@@ -96,8 +96,8 @@ export const deleteCard = (id) => {
 
 export const editCard = (id) => {
   return (dispatch) => {
-    return fetch('/api/cards', {
-      method: 'PUT',
+    return fetch('/api/cards/edit', {
+      method: 'POST',
       body: JSON.stringify(id),
       headers: {
         'Content-Type': 'application/json',

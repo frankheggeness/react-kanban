@@ -126,7 +126,7 @@ router.delete('/', (req, res) => {
     });
 });
 
-router.put('/', (req, res) => {
+router.post('/edit', (req, res) => {
   const body = req.body;
   console.log(body);
   new Card({
@@ -161,7 +161,7 @@ router.put('/', (req, res) => {
         created_by: req.body.created_by,
         assigned_to: req.body.assigned_to,
       })
-        .save()
+        .save(null, { method: 'insert' })
         .then((result) => {
           return res.json(result);
         });
