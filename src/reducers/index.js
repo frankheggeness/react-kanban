@@ -2,6 +2,7 @@ import { LOAD_CARDS, SHOW_NEW_CARD } from '../actions';
 import { ADD_CARD } from '../actions';
 import { LOAD_USERS } from '../actions';
 import { DELETE_CARD } from '../actions';
+import { EDIT_CARD } from '../actions';
 
 const initialState = {
   cards: [],
@@ -24,7 +25,10 @@ function cardReducer(state = initialState, action) {
       return Object.assign({}, state, { cards: [...action.payload] });
 
     case SHOW_NEW_CARD:
-      return Object.assign({}, state, { newCardMaker:action.payload });
+      return Object.assign({}, state, { newCardMaker: action.payload });
+
+    case EDIT_CARD:
+      return Object.assign({}, state, { cards: [...state.cards, action.payload] });
     default:
       return state;
   }

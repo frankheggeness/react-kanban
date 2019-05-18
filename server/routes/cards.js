@@ -59,7 +59,7 @@ router.post('/', (req, res) => {
 });
 
 // router.post('/', (req, res) => {
-  
+
 //   new User
 //   .where({id:req.body.created_by})
 //   .fetch()
@@ -128,24 +128,42 @@ router.delete('/', (req, res) => {
 
 router.put('/', (req, res) => {
   const body = req.body;
-  Card.where({ id: body.id })
-    .fetch()
-    .then((card) => {
-      new Card({ id: body.id })
-        .save(
-          {
-            title: req.body.title,
-            body: req.body.body,
-            priority_id: req.body.priority_id,
-            status_id: req.body.status_id,
-            created_by: req.body.created_by,
-            assigned_to: req.body.assigned_to,
-          },
-          { patch: true },
-        )
-        .then(() => {
-          console.log('edit done');
-          return res.redirect(`/`);
+  console.log(body);
+  new Card({
+    id: req.body.id,
+  })
+    .destroy()
+    .then(() => {
+      // new Card({ id: body.id })
+      //   .save(
+      //     {
+      //       id: body.id,
+      //       title: req.body.title,
+      //       body: req.body.body,
+      //       priority_id: req.body.priority_id,
+      //       status_id: req.body.status_id,
+      //       created_by: req.body.created_by,
+      //       assigned_to: req.body.assigned_to,
+      //     },
+      //     { patch: true },
+      //   )
+      //   .then((card) => {
+      //     res.json(card);
+      //   });
+      console.log('$%$@##$^#@^ youve reached the post');
+      console.log(body);
+      new Card({
+        id: body.id,
+        title: req.body.title,
+        body: req.body.body,
+        priority_id: req.body.priority_id,
+        status_id: req.body.status_id,
+        created_by: req.body.created_by,
+        assigned_to: req.body.assigned_to,
+      })
+        .save()
+        .then((result) => {
+          return res.json(result);
         });
     });
 });
