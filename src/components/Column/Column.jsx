@@ -4,8 +4,9 @@ import CardList from '../../containers/CardList';
 
 const Column = (props) => {
   let filterFunc = filterCards(props.label, props.cards);
+  let columnClass = 'column-container' + props.label;
   return (
-    <div className="column-container">
+    <div className={columnClass}>
       <div className={props.label}>{props.label}</div>
       <CardList cards={filterFunc} users={props.users} />
     </div>

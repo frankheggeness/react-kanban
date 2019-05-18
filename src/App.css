@@ -40,6 +40,38 @@ body {
   justify-content: flex-start;
   align-items: center;
   border-right: 1px solid grey;
+  /* border-left: 1px solid grey; */
+}
+
+.column-containerDone {
+  height: 100%;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  /* border-right: 1px solid grey; */
+  /* border-left: 1px solid grey; */
+}
+.column-containerIn.Progress {
+  height: 100%;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-right: 1px solid grey;
+  /* border-left: 1px solid grey; */
+}
+.column-containerIn.Queue {
+  height: 100%;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-right: 1px solid grey;
+  /* border-left: 1px solid grey; */
 }
 
 .main-body {
