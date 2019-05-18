@@ -163,7 +163,41 @@ router.post('/edit', (req, res) => {
       })
         .save(null, { method: 'insert' })
         .then((result) => {
-          return res.json(result);
+          // return res.json(result);
+          new Card()
+            .fetchAll({
+              withRelated: ['priorities', 'statuses', 'created_by', 'assigned_to'],
+            })
+            .then((cards) => {
+              cardList = cards.models;
+              cards = [];
+
+              cardList.forEach((card) => {
+                let relations = card.relations;
+                const priorities = relations.priorities.attributes;
+                const statuses = relations.statuses.attributes;
+                const created_by = relations.created_by.attributes;
+                const assigned_to = relations.assigned_to.attributes;
+
+                const cardData = {
+                  id: card.id,
+                  title: card.attributes.title,
+                  body: card.attributes.body,
+                  priority: priorities.name,
+                  priority_id: priorities.id,
+                  status: statuses.name,
+                  status_id: statuses.id,
+                  created_by: created_by.first_name,
+                  created_by_id: created_by.id,
+                  assigned_to: assigned_to.first_name,
+                  assigned_to_id: assigned_to.id,
+                };
+
+                cards.push(cardData);
+              });
+              res.json(cards);
+            });
+          // return res.redirect('/api/cards/');
         });
     });
 });

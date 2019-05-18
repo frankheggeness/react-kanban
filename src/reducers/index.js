@@ -28,7 +28,8 @@ function cardReducer(state = initialState, action) {
       return Object.assign({}, state, { newCardMaker: action.payload });
 
     case EDIT_CARD:
-      return Object.assign({}, state, { cards: [...state.cards, action.payload] });
+      // return Object.assign({}, state, { cards: [...state.cards, action.payload] });
+      return Object.assign({}, state, { cards: [...action.payload] });
     default:
       return state;
   }
