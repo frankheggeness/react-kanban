@@ -31,16 +31,11 @@ class EditButtons extends Component {
     findModal.style.display = 'block'
   }
   render() {
-    // if (this.state.show) {
       return <div className="buttonsContainer">
-        <button onClick={this.showForm} className="deleteButton">Edit{this.props.id}</button>
+        <button onClick={this.showForm} className="deleteButton">Edit</button>
         <button onClick={this.deleteCard} className="deleteButton">Delete</button>
         
       </div>
-      
-    // } else {kl;
-    //   return <button onClick={this.showButton}>show</button>;
-    // }
   }
 }
 

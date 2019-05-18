@@ -18,7 +18,7 @@ class EditCardForm extends Component {
       id:this.props.id,
       newForm: this.props.newCardMaker,
     };
-    // this.addNewCard = this.addNewCard.bind(this);
+    this.editThisCard = this.editThisCard.bind(this);
     this.closeForm = this.closeForm.bind(this);
     this.clickForm = this.clickForm.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -47,7 +47,7 @@ class EditCardForm extends Component {
     }
   }
 
-  editCard(e) {
+  editThisCard(e) {
     e.preventDefault();
     let modal = document.getElementById('myModal')
     modal.style.display = 'none'
@@ -55,7 +55,7 @@ class EditCardForm extends Component {
     data.title = this.state.titleInput;
     data.body = this.state.bodyInput;
     data.priority_id = this.state.priorityInput;
-    // data.created_by = this.state.created_byInput;
+    data.created_by = this.state.created_byInput;
     data.created_by = 1;
     data.assigned_to = this.state.assigned_toInput;
     switch (this.state.statusInput) {
@@ -71,15 +71,15 @@ class EditCardForm extends Component {
     }
     console.log(data);
     this.props.editCard(data);
-    this.setState({
-      titleInput: '',
-      bodyInput: '',
-      priorityInput: '',
-      statusInput: '',
-      created_byInput: '',
-      assigned_toInput: '',
-      newForm: false,
-    });
+    // this.setState({
+    //   titleInput: '',
+    //   bodyInput: '',
+    //   priorityInput: '',
+    //   statusInput: '',
+    //   created_byInput: '',
+    //   assigned_toInput: '',
+    //   newForm: false,
+    // });
   }
 
   closeForm(e){
@@ -96,24 +96,18 @@ class EditCardForm extends Component {
     console.log(this.props.newCardMaker);
     this.props.showNewCard(this.props.newCardMaker);
   }
-
-  // render(){
-  //   return <div> 
-  //     {this.props.id}
-  //   </div>
-  // }
   
   render() {
     // if (this.state.newForm) {
       const modalId = 'editModal' + this.props.id
       return (
-        <div class="editModal" id={modalId} >
+        <div className="editModal" id={modalId} >
         <div id="edit-modal-content">
         <div id='closeButtonDiv'>
         <button onClick={this.closeForm} className='formButtons'>Close</button>
         </div>
         <div id="formHeader">
-        <h2>Create New Card</h2>
+        <h2>Edit Card</h2>
         </div>
         <form id="EditCardForm">
           <div className="formDiv">
@@ -189,7 +183,7 @@ class EditCardForm extends Component {
             </select>
           </div>
 
-          <button onClick={this.addNewCard} className='formButtons'>Create New Card</button>
+          <button onClick={this.editThisCard} className='formButtons'>Create New Card</button>
           
         </form>
         </div>
@@ -209,9 +203,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // addCard: (card) => {
-    //   dispatch(addCard(card));
-    // },
+    editCard: (card) => {
+      dispatch(editCard(card));
+    },
     // showNewCard: (state) => {
     //   dispatch(showNewCard(state));
     // },
