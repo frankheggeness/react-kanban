@@ -188,7 +188,7 @@ class EditCardForm extends Component {
             </div>
 
             <button onClick={this.editThisCard} className="formButtons">
-              Create New Card
+              Edit This Card
             </button>
           </form>
         </div>
