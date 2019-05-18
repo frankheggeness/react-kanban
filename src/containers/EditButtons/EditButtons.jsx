@@ -12,7 +12,7 @@ class EditButtons extends Component {
       show: false,
     };
     this.deleteCard = this.deleteCard.bind(this);
-    this.showButton = this.showButton.bind(this);
+    this.showForm = this.showForm.bind(this);
     // this.handleInputChange = this.handleInputChange.bind(this);
   }
 
@@ -23,15 +23,17 @@ class EditButtons extends Component {
     this.props.deleteCard(data);
   }
 
-  showButton(event) {
-    this.setState({
-      show: true,
-    });
+  showForm(event) {
+    const modalId = 'editModal' + this.props.id
+    let findModal = document.getElementById(modalId)
+    console.log(modalId)
+    console.log(findModal)
+    findModal.style.display = 'block'
   }
   render() {
     // if (this.state.show) {
       return <div className="buttonsContainer">
-        <button onClick={this.deleteCard} className="deleteButton">Edit</button>
+        <button onClick={this.showForm} className="deleteButton">Edit{this.props.id}</button>
         <button onClick={this.deleteCard} className="deleteButton">Delete</button>
         
       </div>

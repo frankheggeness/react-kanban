@@ -9,15 +9,16 @@ class EditCardForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      titleInput: '',
-      bodyInput: '',
-      priorityInput: '',
-      statusInput: '',
-      created_byInput: '',
-      assigned_toInput: '',
+      titleInput: this.props.title,
+      bodyInput: this.props.body,
+      priorityInput: this.props.priority,
+      statusInput: this.props.status_id,
+      created_byInput: this.props.created_by,
+      assigned_toInput: this.props.assigned_to,
+      id:this.props.id,
       newForm: this.props.newCardMaker,
     };
-    this.addNewCard = this.addNewCard.bind(this);
+    // this.addNewCard = this.addNewCard.bind(this);
     this.closeForm = this.closeForm.bind(this);
     this.clickForm = this.clickForm.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -69,7 +70,7 @@ class EditCardForm extends Component {
         break;
     }
     console.log(data);
-    this.props.addCard(data);
+    this.props.editCard(data);
     this.setState({
       titleInput: '',
       bodyInput: '',
@@ -83,17 +84,30 @@ class EditCardForm extends Component {
 
   closeForm(e){
     e.preventDefault();
-    let modal = document.getElementById('editModal')
-    modal.style.display = 'none'
+    // let modal = document.getElementById('editModal')
+    // modal.style.display = 'none'
+    const modalId = 'editModal' + this.props.id
+    let findModal = document.getElementById(modalId)
+    console.log(modalId)
+    console.log(findModal)
+    findModal.style.display = 'none'
   }
   clickForm(event) {
     console.log(this.props.newCardMaker);
     this.props.showNewCard(this.props.newCardMaker);
   }
+
+  // render(){
+  //   return <div> 
+  //     {this.props.id}
+  //   </div>
+  // }
+  
   render() {
     // if (this.state.newForm) {
+      const modalId = 'editModal' + this.props.id
       return (
-        <div id="editModal" >
+        <div class="editModal" id={modalId} >
         <div id="edit-modal-content">
         <div id='closeButtonDiv'>
         <button onClick={this.closeForm} className='formButtons'>Close</button>
@@ -195,12 +209,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addCard: (card) => {
-      dispatch(addCard(card));
-    },
-    showNewCard: (state) => {
-      dispatch(showNewCard(state));
-    },
+    // addCard: (card) => {
+    //   dispatch(addCard(card));
+    // },
+    // showNewCard: (state) => {
+    //   dispatch(showNewCard(state));
+    // },
   };
 };
 

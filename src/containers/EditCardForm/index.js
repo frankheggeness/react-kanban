@@ -1,2 +1,2 @@
-import EditCardButton from './EditCardButton';
-export default EditCardButton;
+import EditCardForm from './EditCardForm';
+export default EditCardForm;

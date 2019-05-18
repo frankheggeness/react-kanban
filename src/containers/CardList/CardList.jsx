@@ -36,6 +36,7 @@ class CardList extends Component {
             status_id={card.status_id}
             created_by={card.created_by}
             assigned_to={card.assigned_to}
+            users={this.props.users}
           />
         );
       });
