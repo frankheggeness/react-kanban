@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import AddCardButton from '../AddCardButton';
-import { logIn } from '../../actions';
+import { LogIn } from '../../actions';
 
 import { showNewCard } from '../../actions';
 import { connect } from 'react-redux';
@@ -40,7 +40,7 @@ class NewCardForm extends Component {
     data.email = this.state.emailInput;
     data.password = this.state.passwordInput;
     console.log(data);
-    this.props.logIn(data);
+    this.props.LogIn(data);
     this.setState({
       emailInput: '',
       passwordInput: '',
@@ -121,9 +121,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // addCard: (card) => {
-    //   dispatch(addCard(card));
-    // },
+    LogIn: (card) => {
+      dispatch(LogIn(card));
+    },
     // showNewCard: (state) => {
     //   dispatch(showNewCard(state));
     // },

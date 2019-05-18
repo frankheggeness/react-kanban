@@ -28,21 +28,26 @@ export const logOut = () => {
   };
 };
 
-export const logIn = () => {
+export const LogIn = (user) => {
   return (dispatch) => {
-    return fetch('/api/cards/login')
+    return fetch('/api/cards/login', {
+      method: 'POST',
+      body: JSON.stringify(user),
+      // body: user,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then((response) => {
-        console.log(response);
         return response.json();
       })
-      .then((user) => {
-        console.log(user);
+      .then((body) => {
         return dispatch({
           type: LOGIN,
-          payload: user,
+          payload: body,
         });
       })
-      .catch((err) => console.log('Cant access website' + err));
+      .catch((err) => console.log('@' + err));
   };
 };
 
