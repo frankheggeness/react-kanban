@@ -7,6 +7,7 @@ const LocalStrategy = require('passport-local');
 const cookieParser = require('cookie-parser');
 const redis = require('connect-redis')(session);
 const Card = require('./database/models/Card');
+const User = require('./database/models/User');
 const saltRounds = 12;
 // routes
 const userRoute = require('./routes/users');
@@ -37,24 +38,24 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(
-  new LocalStrategy(function(username, password, done) {
-    return new User({ username: username })
+  new LocalStrategy(function(email, password, done) {
+    return new User({ email: email })
       .fetch()
       .then((user) => {
         console.log(user);
 
         if (user === null) {
-          return done(null, false, { message: 'bad username and password' });
+          return done(null, false, { message: 'bad email and password' });
         } else {
           user = user.toJSON();
           bcrypt.compare(password, user.password).then((res) => {
-            // happy route: username exists, passsword matches
+            // happy route: email exists, passsword matches
             if (res) {
               return done(null, user);
             }
             // error route
             else {
-              return done(null, false, { message: 'bad username or password' });
+              return done(null, false, { message: 'bad email or password' });
             }
           });
         }
@@ -68,7 +69,7 @@ passport.use(
 
 passport.serializeUser(function(user, done) {
   console.log('serializing');
-  return done(null, { id: user.id, username: user.username });
+  return done(null, { id: user.id, email: user.email });
 });
 
 passport.deserializeUser(function(user, done) {
@@ -79,7 +80,7 @@ passport.deserializeUser(function(user, done) {
     user = user.toJSON();
     done(null, {
       id: user.id,
-      username: user.username,
+      email: user.email,
       role_id: user.role_id,
     });
   });

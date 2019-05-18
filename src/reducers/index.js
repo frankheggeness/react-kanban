@@ -3,12 +3,14 @@ import { ADD_CARD } from '../actions';
 import { LOAD_USERS } from '../actions';
 import { DELETE_CARD } from '../actions';
 import { EDIT_CARD } from '../actions';
+import { LOGIN } from '../actions';
+import { LOGOUT } from '../actions';
 
 const initialState = {
   cards: [],
   users: [],
   newCardMaker: false,
-  isLoggedIn: true,
+  isLoggedIn: false,
 };
 
 function cardReducer(state = initialState, action) {
@@ -28,8 +30,11 @@ function cardReducer(state = initialState, action) {
       return Object.assign({}, state, { newCardMaker: action.payload });
 
     case EDIT_CARD:
-      // return Object.assign({}, state, { cards: [...state.cards, action.payload] });
       return Object.assign({}, state, { cards: [...action.payload] });
+    case LOGIN:
+      return Object.assign({}, state, { isLoggedIn: action.payload });
+    case LOGOUT:
+      return Object.assign({}, state, { isLoggedIn: action.payload });
     default:
       return state;
   }

@@ -48,14 +48,14 @@ class NewCardForm extends Component {
 
   addNewCard(e) {
     e.preventDefault();
-    let modal = document.getElementById('myModal')
-    modal.style.display = 'none'
+    let modal = document.getElementById('myModal');
+    modal.style.display = 'none';
     const data = {};
     data.title = this.state.titleInput;
     data.body = this.state.bodyInput;
     data.priority_id = this.state.priorityInput;
-    // data.created_by = this.state.created_byInput;
-    data.created_by = 1;
+    data.created_by = this.state.created_byInput;
+    // data.created_by = this.state.create
     data.assigned_to = this.state.assigned_toInput;
     switch (this.state.statusInput) {
       case 'QUEUE':
@@ -81,10 +81,10 @@ class NewCardForm extends Component {
     });
   }
 
-  closeForm(e){
+  closeForm(e) {
     e.preventDefault();
-    let modal = document.getElementById('myModal')
-    modal.style.display = 'none'
+    let modal = document.getElementById('myModal');
+    modal.style.display = 'none';
   }
   clickForm(event) {
     console.log(this.props.newCardMaker);
@@ -92,97 +92,121 @@ class NewCardForm extends Component {
   }
   render() {
     // if (this.state.newForm) {
-      return (
-        <div id="myModal" >
+    return (
+      <div id="myModal">
         <div id="modal-content">
-        <div id='closeButtonDiv'>
-        <button onClick={this.closeForm} className='formButtons'>Close</button>
+          <div id="closeButtonDiv">
+            <button onClick={this.closeForm} className="formButtons">
+              Close
+            </button>
+          </div>
+          <div id="formHeader">
+            <h2>Create New Card</h2>
+          </div>
+          <form id="newCardForm">
+            <div className="formDiv">
+              <label htmlFor="title" className="labelClass">
+                Title:
+              </label>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                value={this.state.titleInput}
+                onChange={this.handleInputChange}
+                required
+                pattern="[A-Za-z0-9]{2,20}"
+              />
+            </div>
+
+            <div className="formDiv">
+              <label htmlFor="priority" className="labelClass">
+                Priority Id:
+              </label>
+              <select
+                name="priority"
+                id="priority"
+                value={this.state.priorityInput}
+                onChange={this.handleInputChange}
+                required
+              >
+                <option value="">--Please choose an option--</option>
+                <option value="1">High</option>
+                <option value="2">Med</option>
+                <option value="3">Low</option>
+                <option value="4">Blocked</option>
+              </select>
+            </div>
+
+            <div className="formDiv">
+              <label htmlFor="body" className="labelClass">
+                Body:
+              </label>
+              <input
+                type="text"
+                name="body"
+                id="body"
+                value={this.state.bodyInput}
+                onChange={this.handleInputChange}
+                required
+              />
+            </div>
+
+            <div className="formDiv">
+              <label htmlFor="status" className="labelClass">
+                Status Id:
+              </label>
+              <select
+                name="status"
+                id="status"
+                value={this.state.statusInput}
+                onChange={this.handleInputChange}
+                required
+              >
+                <option value="">--Please choose an option--</option>
+                <option value="QUEUE">In Queue</option>
+                <option value="IN PROGRESS">In Progress</option>
+                <option value="DONE">Done</option>
+              </select>
+            </div>
+
+            <div className="formDiv">
+              <select
+                name="created_by"
+                id="created_by"
+                value={this.state.created_byInput}
+                onChange={this.handleInputChange}
+                required
+              >
+                <option value="">-- Created By User --</option>
+                {this.props.users.map((user) => {
+                  return <option key={user.id} value={user.id}>{`${user.first_name} ${user.last_name}`}</option>;
+                })}
+              </select>
+            </div>
+
+            <div className="formDiv">
+              <select
+                name="assigned_to"
+                id="assigned_to"
+                value={this.state.assigned_toInput}
+                onChange={this.handleInputChange}
+                required
+              >
+                <option value="">--Assign Task To User--</option>
+                {this.props.users.map((user) => {
+                  return <option key={user.id} value={user.id}>{`${user.first_name} ${user.last_name}`}</option>;
+                })}
+              </select>
+            </div>
+
+            <button onClick={this.addNewCard} className="formButtons">
+              Create New Card
+            </button>
+          </form>
         </div>
-        <div id="formHeader">
-        <h2>Create New Card</h2>
-        </div>
-        <form id="newCardForm">
-          <div className="formDiv">
-            <label htmlFor="title" className="labelClass">
-              Title:
-            </label>
-            <input
-              type="text"
-              name="title"
-              id="title"
-              value={this.state.titleInput}
-              onChange={this.handleInputChange}
-            />
-          </div>
-
-          <div className="formDiv">
-            <label htmlFor="priority" className="labelClass">
-              Priority Id:
-            </label>
-            <select name="priority" id="priority" value={this.state.priorityInput} onChange={this.handleInputChange}>
-              <option value="">--Please choose an option--</option>
-              <option value="1">High</option>
-              <option value="2">Med</option>
-              <option value="3">Low</option>
-              <option value="4">Blocked</option>
-            </select>
-          </div>
-
-          <div className="formDiv">
-            <label htmlFor="body" className="labelClass">
-              Body:
-            </label>
-            <input type="text" name="body" id="body" value={this.state.bodyInput} onChange={this.handleInputChange} />
-          </div>
-
-          <div className="formDiv">
-            <label htmlFor="status" className="labelClass">
-              Status Id:
-            </label>
-            <select name="status" id="status" value={this.state.statusInput} onChange={this.handleInputChange}>
-              <option value="">--Please choose an option--</option>
-              <option value="QUEUE">In Queue</option>
-              <option value="IN PROGRESS">In Progress</option>
-              <option value="DONE">Done</option>
-            </select>
-          </div>
-
-<div className="formDiv">
-            <select
-              name="created_by"
-              id="created_by"
-              value={this.state.created_byInput}
-              onChange={this.handleInputChange}
-            >
-              <option value="">-- Created By User --</option>
-              {this.props.users.map((user) => {
-                return <option key={user.id} value={user.id}>{`${user.first_name} ${user.last_name}`}</option>;
-              })}
-            </select>
-          </div>
-
-          <div className="formDiv">
-            <select
-              name="assigned_to"
-              id="assigned_to"
-              value={this.state.assigned_toInput}
-              onChange={this.handleInputChange}
-            >
-              <option value="">--Assign Task To User--</option>
-              {this.props.users.map((user) => {
-                return <option key={user.id} value={user.id}>{`${user.first_name} ${user.last_name}`}</option>;
-              })}
-            </select>
-          </div>
-
-          <button onClick={this.addNewCard} className='formButtons'>Create New Card</button>
-          
-        </form>
-        </div>
-          
-        </div>
-        
-      );
+      </div>
+    );
     // } else  {
     //   return <div> no form</div>;
     // }

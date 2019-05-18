@@ -58,30 +58,22 @@ router.post('/', (req, res) => {
     });
 });
 
-// router.post('/', (req, res) => {
+// login/logout
 
-//   new User
-//   .where({id:req.body.created_by})
-//   .fetch()
-//   .then((created) =>{
-//     let createdUser = created.first_name
-//     console.log('@%@$%$^%#$^', created)
-//     new Card({
-//       title: req.body.title,
-//       body: req.body.body,
-//       priority_id: req.body.priority_id,
-//       status_id: req.body.status_id,
-//       // created_by: req.body.created_by,
-//       created_by: createdUser,
-//       assigned_to: req.body.assigned_to,
-//     })
-//       .save()
-//       .then((result) => {
-//         return res.json(result);
-//       });
-//   })
-// });
+router.get('/logout', (req, res) => {
+  req.logout();
+  // res.json('/');
+  return res.send(false);
+});
 
+// router.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login' }));
+
+router.post('/login', passport.authenticate('local'), function(req, res) {
+  // If this function gets called, authentication was successful.
+  // `req.user` contains the authenticated user.
+  res.send(true);
+});
+// delete
 router.delete('/', (req, res) => {
   console.log(req.body.id);
   new Card({

@@ -82,3 +82,7 @@ body {
   align-items: flex-start;
   justify-content: space-evenly;
 }
+
+#headerButtons {
+  display: flex;
+}

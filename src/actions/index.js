@@ -6,8 +6,45 @@ export const DELETE_CARD = 'DELETE_CARD';
 export const EDIT_CARD = 'EDIT_CARD';
 export const LOAD_USERS = 'LOAD_USERS';
 export const SHOW_NEW_CARD = 'SHOW_NEW_CARD';
+export const LOGOUT = 'LOGOUT';
+export const LOGIN = 'LOGIN';
 
 // ACTION CREATOR
+
+export const logOut = () => {
+  return (dispatch) => {
+    return fetch('/api/cards/logout')
+      .then((response) => {
+        return response.json();
+      })
+      .then((cards) => {
+        console.log(cards);
+        return dispatch({
+          type: LOGOUT,
+          payload: cards,
+        });
+      })
+      .catch((err) => console.log('Cant access website' + err));
+  };
+};
+
+export const logIn = () => {
+  return (dispatch) => {
+    return fetch('/api/cards/login')
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((user) => {
+        console.log(user);
+        return dispatch({
+          type: LOGIN,
+          payload: user,
+        });
+      })
+      .catch((err) => console.log('Cant access website' + err));
+  };
+};
 
 export const addCard = (card) => {
   return (dispatch) => {

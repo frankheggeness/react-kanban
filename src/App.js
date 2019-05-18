@@ -4,6 +4,8 @@ import KanbanTitle from './components/KanbanTitle';
 import CardList from './containers/CardList';
 import NewCardForm from './containers/NewCardForm';
 import NewCardButton from './containers/NewCardButton';
+import LoginButton from './containers/LoginButton';
+import LoginForm from './containers/LoginForm';
 import Column from './components/Column';
 // import AddBook from './containers/AddBook';
 import { connect } from 'react-redux';
@@ -29,7 +31,10 @@ class App extends React.Component {
         <header className="App-header">
           {/* <UserLoggedIn loggedIn={this.props.length} /> */}
           <KanbanTitle title={this.state.title} />
-          <NewCardButton />
+          <div id="headerButtons">
+            <NewCardButton />
+            <LoginButton />
+          </div>
         </header>
         <div className="main-body">
           <Column
@@ -57,6 +62,7 @@ class App extends React.Component {
           />
         </div>
         <NewCardForm users={this.props.users} />
+        <LoginForm />
       </div>
     );
   }
@@ -67,6 +73,7 @@ const mapStateToProps = (state) => {
     cards: state.cardReducer.cards,
     users: state.cardReducer.users,
     newCardMaker: state.cardReducer.newCardMaker,
+    isLoggedIn: state.cardReducer.isLoggedIn,
   };
 };
 
