@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 // import AddCardButton from '../AddCardButton';
-import { addCard } from '../../actions';
+import { editCard } from '../../actions';
 import { showNewCard } from '../../actions';
 import { connect } from 'react-redux';
-import './NewCardForm.css';
+import './EditCardForm.css';
 
-class NewCardForm extends Component {
+class EditCardForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,7 +46,7 @@ class NewCardForm extends Component {
     }
   }
 
-  addNewCard(e) {
+  editCard(e) {
     e.preventDefault();
     let modal = document.getElementById('myModal')
     modal.style.display = 'none'
@@ -83,7 +83,7 @@ class NewCardForm extends Component {
 
   closeForm(e){
     e.preventDefault();
-    let modal = document.getElementById('myModal')
+    let modal = document.getElementById('editModal')
     modal.style.display = 'none'
   }
   clickForm(event) {
@@ -93,15 +93,15 @@ class NewCardForm extends Component {
   render() {
     // if (this.state.newForm) {
       return (
-        <div id="myModal" >
-        <div id="modal-content">
+        <div id="editModal" >
+        <div id="edit-modal-content">
         <div id='closeButtonDiv'>
         <button onClick={this.closeForm} className='formButtons'>Close</button>
         </div>
         <div id="formHeader">
         <h2>Create New Card</h2>
         </div>
-        <form id="newCardForm">
+        <form id="EditCardForm">
           <div className="formDiv">
             <label htmlFor="title" className="labelClass">
               Title:
@@ -183,9 +183,6 @@ class NewCardForm extends Component {
         </div>
         
       );
-    // } else  {
-    //   return <div> no form</div>;
-    // }
   }
 }
 
@@ -210,4 +207,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(NewCardForm);
+)(EditCardForm);

@@ -19,18 +19,20 @@ class NewCardButton extends Component {
    
     let modal = document.getElementById('myModal')
     modal.style.display = 'block'
-    if (this.state.buttonClick === false) {
-      this.setState({
-        buttonClick: true,
-      });
-      this.props.showNewCard(true);
-    }
-    if (this.state.buttonClick === true) {
-      this.setState({
-        buttonClick: false,
-      });
-      this.props.showNewCard(false);
-    }
+
+
+    // if (this.state.buttonClick === false) {
+    //   this.setState({
+    //     buttonClick: true,
+    //   });
+    //   this.props.showNewCard(true);
+    // }
+    // if (this.state.buttonClick === true) {
+    //   this.setState({
+    //     buttonClick: false,
+    //   });
+    //   this.props.showNewCard(false);
+    // }
   }
   render() {
     return <div className="newButtonContainer">
