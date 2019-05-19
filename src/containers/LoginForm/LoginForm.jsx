@@ -58,17 +58,18 @@ class NewCardForm extends Component {
   }
   render() {
     // if (this.state.newForm) {
-    if (this.props.isLoggedIn === false) {
+    if (this.props.isLoggedIn === null) {
       return (
         <div id="loginModal">
-          <div id="modal-content">
+          <div id="login-modal-content">
             {/* <div id="closeButtonDiv">
               <button onClick={this.closeForm} className="formButtons">
                 Close
               </button>
             </div> */}
             <div id="formHeader">
-              <h2>Login Form</h2>
+              <h2>Welcome To Your Kanban</h2>
+              <h3>Please Log-in</h3>
             </div>
             <form id="newCardForm">
               <div className="formDiv">
@@ -101,7 +102,7 @@ class NewCardForm extends Component {
               </div>
 
               <button onClick={this.loginUser} className="formButtons">
-                Create New Card
+                Log In
               </button>
             </form>
           </div>

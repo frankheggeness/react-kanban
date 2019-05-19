@@ -33,6 +33,7 @@ class NewCardButton extends Component {
 const mapStateToProps = (state) => {
   return {
     newCardMaker: state.cardReducer.newCardMaker,
+    isLoggedIn: state.cardReducer.isLoggedIn,
   };
 };
 

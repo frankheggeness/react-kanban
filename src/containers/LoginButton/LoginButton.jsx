@@ -26,9 +26,9 @@ class NewCardButton extends Component {
     modal.style.display = 'block';
   }
   logoutEvent(event) {
-    console.log('clicked');
+    // console.log('clicked');
     console.log(this.props.isLoggedIn);
-    console.log(this.state.isLoggedIn);
+    // console.log(this.state.isLoggedIn);
     this.props.logOut();
     // let modal = document.getElementById('loginModal');
     // modal.style.display = 'block';
@@ -36,7 +36,7 @@ class NewCardButton extends Component {
 
   render() {
     console.log('$%#^^#^%^#$', this.props);
-    if (this.props.isLoggedIn === true) {
+    if (this.props.isLoggedIn) {
       return (
         <div className="newButtonContainer">
           <button onClick={this.logoutEvent} className="newCardButton">
@@ -44,7 +44,7 @@ class NewCardButton extends Component {
           </button>
         </div>
       );
-    } else if (this.props.isLoggedIn === false) {
+    } else if (this.props.isLoggedIn === null) {
       return (
         <div className="newButtonContainer">
           <button onClick={this.showLoginModal} className="newCardButton">

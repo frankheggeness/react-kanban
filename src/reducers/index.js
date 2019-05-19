@@ -10,7 +10,7 @@ const initialState = {
   cards: [],
   users: [],
   newCardMaker: false,
-  isLoggedIn: false,
+  isLoggedIn: null,
 };
 
 function cardReducer(state = initialState, action) {
@@ -34,7 +34,7 @@ function cardReducer(state = initialState, action) {
     case LOGIN:
       return Object.assign({}, state, { isLoggedIn: action.payload });
     case LOGOUT:
-      return Object.assign({}, state, { isLoggedIn: action.payload });
+      return Object.assign({}, state, { isLoggedIn: null });
     default:
       return state;
   }

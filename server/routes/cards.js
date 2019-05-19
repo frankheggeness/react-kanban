@@ -72,7 +72,9 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
   // If this function gets called, authentication was successful.
   // `req.user` contains the authenticated user.
   console.log(req);
-  res.send(true);
+  let user = req.user;
+  res.json(user);
+  // res.send(true);
 });
 // delete
 router.delete('/', (req, res) => {
@@ -127,22 +129,6 @@ router.post('/edit', (req, res) => {
   })
     .destroy()
     .then(() => {
-      // new Card({ id: body.id })
-      //   .save(
-      //     {
-      //       id: body.id,
-      //       title: req.body.title,
-      //       body: req.body.body,
-      //       priority_id: req.body.priority_id,
-      //       status_id: req.body.status_id,
-      //       created_by: req.body.created_by,
-      //       assigned_to: req.body.assigned_to,
-      //     },
-      //     { patch: true },
-      //   )
-      //   .then((card) => {
-      //     res.json(card);
-      //   });
       console.log('$%$@##$^#@^ youve reached the post');
       console.log(body);
       new Card({
