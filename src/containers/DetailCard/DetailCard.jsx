@@ -18,34 +18,34 @@ class DetailCard extends Component {
       id: this.props.id,
       newForm: this.props.newCardMaker,
     };
-    this.editThisCard = this.editThisCard.bind(this);
-    this.closeForm = this.closeForm.bind(this);
-    this.clickForm = this.clickForm.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
+    // this.editThisCard = this.editThisCard.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    // this.clickForm = this.clickForm.bind(this);
+    // this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleInputChange(event) {
-    switch (event.target.id) {
-      case 'title':
-        this.setState({ titleInput: event.target.value });
-        break;
-      case 'body':
-        this.setState({ bodyInput: event.target.value });
-        break;
-      case 'priority':
-        this.setState({ priorityInput: event.target.value });
-        break;
-      case 'status':
-        this.setState({ statusInput: event.target.value });
-        break;
-      case 'created_by':
-        this.setState({ created_byInput: event.target.value });
-        break;
-      case 'assigned_to':
-        this.setState({ assigned_toInput: event.target.value });
-        break;
-    }
-  }
+  // handleInputChange(event) {
+  //   switch (event.target.id) {
+  //     case 'title':
+  //       this.setState({ titleInput: event.target.value });
+  //       break;
+  //     case 'body':
+  //       this.setState({ bodyInput: event.target.value });
+  //       break;
+  //     case 'priority':
+  //       this.setState({ priorityInput: event.target.value });
+  //       break;
+  //     case 'status':
+  //       this.setState({ statusInput: event.target.value });
+  //       break;
+  //     case 'created_by':
+  //       this.setState({ created_byInput: event.target.value });
+  //       break;
+  //     case 'assigned_to':
+  //       this.setState({ assigned_toInput: event.target.value });
+  //       break;
+  //   }
+  // }
 
   editThisCard(e) {
     e.preventDefault();
@@ -84,11 +84,11 @@ class DetailCard extends Component {
     // });
   }
 
-  closeForm(e) {
+  closeModal(e) {
     e.preventDefault();
     // let modal = document.getElementById('editModal')
     // modal.style.display = 'none'
-    const modalId = 'editModal' + this.props.id;
+    const modalId = 'detailModal' + this.props.id;
     let findModal = document.getElementById(modalId);
     console.log(modalId);
     console.log(findModal);
@@ -101,10 +101,16 @@ class DetailCard extends Component {
 
   render() {
     // if (this.state.newForm) {
-    const modalId = 'editModal' + this.props.id;
+    const modalId = 'detailModal' + this.props.id;
+    const detailBoxClass = 'detailBox' + this.props.status_id;
     return (
-      <div className="editModal" id={modalId}>
-        <div id="edit-modal-content" />
+      <div className="detailModal" id={modalId} onClick={this.closeModal}>
+        <div id="edit-modal-content">
+          <div className={detailBoxClass}>
+            <h2>Title:{this.props.title}</h2>
+            <p>Body: {this.props.body}</p>
+          </div>
+        </div>
       </div>
     );
   }
