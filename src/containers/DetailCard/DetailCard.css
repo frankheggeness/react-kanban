@@ -12,8 +12,12 @@
 }
 
 #detail-modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  /* background-color: #fefefe; */
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  background-color: none;
+  /* margin: 15% auto; */
+  /* 15% from the top and centered */
   /* padding: 20px; */
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
@@ -22,4 +26,17 @@
 .detailBox1 {
   background-color: #fdf2de;
   height: 100%;
+  border: 1px solid #f5ba49;
+}
+
+.detailBox2 {
+  height: 100%;
+  background-color: #e3f8ca;
+  border: 1px solid #8dd045;
+}
+
+.detailBox3 {
+  height: 100%;
+  background-color: #f7f8fb;
+  border: 1px solid #d3d7e1;
 }

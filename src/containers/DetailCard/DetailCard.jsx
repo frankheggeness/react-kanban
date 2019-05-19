@@ -107,7 +107,7 @@ class DetailCard extends Component {
       <div className="detailModal" id={modalId} onClick={this.closeModal}>
         <div id="edit-modal-content">
           <div className={detailBoxClass}>
-            <h2>Title:{this.props.title}</h2>
+            <h2>Title: {this.props.title}</h2>
             <p>Body: {this.props.body}</p>
           </div>
         </div>
