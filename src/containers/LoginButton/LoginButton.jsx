@@ -40,16 +40,16 @@ class NewCardButton extends Component {
       return (
         <div className="newButtonContainer">
           <button onClick={this.logoutEvent} className="newCardButton">
-            LOGOUT
+            LOGOUT USER: {this.props.isLoggedIn.first_name}
           </button>
         </div>
       );
     } else if (this.props.isLoggedIn === null) {
       return (
         <div className="newButtonContainer">
-          <button onClick={this.showLoginModal} className="newCardButton">
+          {/* <button onClick={this.showLoginModal} className="newCardButton">
             LOGIN
-          </button>
+          </button> */}
         </div>
       );
     } else {

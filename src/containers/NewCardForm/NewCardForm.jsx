@@ -54,7 +54,8 @@ class NewCardForm extends Component {
     data.title = this.state.titleInput;
     data.body = this.state.bodyInput;
     data.priority_id = this.state.priorityInput;
-    data.created_by = this.state.created_byInput;
+    // data.created_by = this.state.created_byInput;
+    data.created_by = this.props.isLoggedIn.id;
     // data.created_by = this.state.create
     data.assigned_to = this.state.assigned_toInput;
     switch (this.state.statusInput) {
@@ -172,21 +173,31 @@ class NewCardForm extends Component {
               </div>
 
               <div className="formDiv">
-                <select
+                <label htmlFor="created_by" className="labelClass">
+                  Created By:
+                </label>
+                {/* <select
                   name="created_by"
                   id="created_by"
                   value={this.state.created_byInput}
                   onChange={this.handleInputChange}
                   required
                 >
-                  <option value="">-- Created By User --</option>
-                  {/* {this.props.users.map((user) => {
-                    return <option key={user.id} value={user.id}>{`${user.first_name} ${user.last_name}`}</option>;
-                  })} */}
+                  
                   <option key={this.props.isLoggedIn.id} value={this.props.isLoggedIn.id}>{`${
                     this.props.isLoggedIn.first_name
                   } ${this.props.isLoggedIn.last_name}`}</option>
-                </select>
+                </select> */}
+                <input
+                  type="text"
+                  name="created_by"
+                  id="created_by"
+                  value={`You (${this.props.isLoggedIn.first_name} ${this.props.isLoggedIn.last_name})`}
+                  onChange={this.handleInputChange}
+                  required
+                  pattern="[A-Za-z0-9]{2,20}"
+                  readonly
+                />
               </div>
 
               <div className="formDiv">
