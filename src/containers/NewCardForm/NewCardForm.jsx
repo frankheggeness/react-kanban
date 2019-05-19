@@ -207,9 +207,6 @@ class NewCardForm extends Component {
         </div>
       </div>
     );
-    // } else  {
-    //   return <div> no form</div>;
-    // }
   }
 }
 

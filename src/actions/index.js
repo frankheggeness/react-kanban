@@ -39,9 +39,11 @@ export const LogIn = (user) => {
       },
     })
       .then((response) => {
+        // console.log(response.toJSON());
         return response.json();
       })
       .then((body) => {
+        console.log(typeof body);
         return dispatch({
           type: LOGIN,
           payload: body,

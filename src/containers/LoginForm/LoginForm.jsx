@@ -58,57 +58,58 @@ class NewCardForm extends Component {
   }
   render() {
     // if (this.state.newForm) {
-    return (
-      <div id="loginModal">
-        <div id="modal-content">
-          <div id="closeButtonDiv">
-            <button onClick={this.closeForm} className="formButtons">
-              Close
-            </button>
-          </div>
-          <div id="formHeader">
-            <h2>Login Form</h2>
-          </div>
-          <form id="newCardForm">
-            <div className="formDiv">
-              <label htmlFor="title" className="labelClass">
-                Email:
-              </label>
-              <input
-                type="text"
-                name="email"
-                id="email"
-                value={this.state.emailInput}
-                onChange={this.handleInputChange}
-                required
-                pattern="[A-Za-z0-9]{2,20}"
-              />
+    if (this.props.isLoggedIn === false) {
+      return (
+        <div id="loginModal">
+          <div id="modal-content">
+            {/* <div id="closeButtonDiv">
+              <button onClick={this.closeForm} className="formButtons">
+                Close
+              </button>
+            </div> */}
+            <div id="formHeader">
+              <h2>Login Form</h2>
             </div>
+            <form id="newCardForm">
+              <div className="formDiv">
+                <label htmlFor="title" className="labelClass">
+                  Email:
+                </label>
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  value={this.state.emailInput}
+                  onChange={this.handleInputChange}
+                  required
+                  pattern="[A-Za-z0-9]{2,20}"
+                />
+              </div>
 
-            <div className="formDiv">
-              <label htmlFor="body" className="labelClass">
-                Password:
-              </label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                value={this.state.passwordInput}
-                onChange={this.handleInputChange}
-                required
-              />
-            </div>
+              <div className="formDiv">
+                <label htmlFor="body" className="labelClass">
+                  Password:
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  value={this.state.passwordInput}
+                  onChange={this.handleInputChange}
+                  required
+                />
+              </div>
 
-            <button onClick={this.loginUser} className="formButtons">
-              Create New Card
-            </button>
-          </form>
+              <button onClick={this.loginUser} className="formButtons">
+                Create New Card
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
-    );
-    // } else  {
-    //   return <div> no form</div>;
-    // }
+      );
+    } else {
+      return <div />;
+    }
   }
 }
 
@@ -116,13 +117,14 @@ const mapStateToProps = (state) => {
   return {
     // cards: state.cards
     newCardMaker: state.cardReducer.newCardMaker,
+    isLoggedIn: state.cardReducer.isLoggedIn,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     LogIn: (card) => {
-      dispatch(LogIn(card));
+      return dispatch(LogIn(card));
     },
     // showNewCard: (state) => {
     //   dispatch(showNewCard(state));

@@ -38,33 +38,39 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(
-  new LocalStrategy(function(email, password, done) {
-    return new User({ email: email })
-      .fetch()
-      .then((user) => {
-        console.log(user);
+  new LocalStrategy(
+    {
+      usernameField: 'email',
+      passwordField: 'password',
+    },
+    function(email, password, done) {
+      return new User({ email: email })
+        .fetch()
+        .then((user) => {
+          console.log(user);
 
-        if (user === null) {
-          return done(null, false, { message: 'bad email and password' });
-        } else {
-          user = user.toJSON();
-          bcrypt.compare(password, user.password).then((res) => {
-            // happy route: email exists, passsword matches
-            if (res) {
-              return done(null, user);
-            }
-            // error route
-            else {
-              return done(null, false, { message: 'bad email or password' });
-            }
-          });
-        }
-      })
-      .catch((err) => {
-        console.log('error', err);
-        return done(err);
-      });
-  }),
+          if (user === null) {
+            return done(null, false, { message: 'bad email and password' });
+          } else {
+            user = user.toJSON();
+            bcrypt.compare(password, user.password).then((res) => {
+              // happy route: email exists, passsword matches
+              if (res) {
+                return done(null, user);
+              }
+              // error route
+              else {
+                return done(null, false, { message: 'bad email or password' });
+              }
+            });
+          }
+        })
+        .catch((err) => {
+          console.log('error', err);
+          return done(err);
+        });
+    },
+  ),
 );
 
 passport.serializeUser(function(user, done) {

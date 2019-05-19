@@ -16,28 +16,18 @@ class NewCardButton extends Component {
 
   clickForm(event) {
     console.log('clicked');
-   
-    let modal = document.getElementById('myModal')
-    modal.style.display = 'block'
 
-
-    // if (this.state.buttonClick === false) {
-    //   this.setState({
-    //     buttonClick: true,
-    //   });
-    //   this.props.showNewCard(true);
-    // }
-    // if (this.state.buttonClick === true) {
-    //   this.setState({
-    //     buttonClick: false,
-    //   });
-    //   this.props.showNewCard(false);
-    // }
+    let modal = document.getElementById('myModal');
+    modal.style.display = 'block';
   }
   render() {
-    return <div className="newButtonContainer">
-      <button onClick={this.clickForm} className='newCardButton'>+ NEW TASK</button>
-    </div>
+    return (
+      <div className="newButtonContainer">
+        <button onClick={this.clickForm} className="newCardButton">
+          + NEW TASK
+        </button>
+      </div>
+    );
   }
 }
 const mapStateToProps = (state) => {
